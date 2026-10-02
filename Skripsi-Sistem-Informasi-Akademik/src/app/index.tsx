@@ -2,21 +2,18 @@
 import React from "react";
 import { router } from "expo-router";
 import { Alert } from "react-native";
-
 import LoginScreen from "../screens/LoginScreen";
 
 export default function Index() {
   const handleLogin = (userId: string) => {
-    const id = userId.trim();
+    // Membersihkan spasi dan karakter selain angka
+    const id = userId.replace(/\D/g, "");
 
-    console.log("ID yang diterima:", id);
+    console.log("ID login:", JSON.stringify(id));
 
+    // Akun simulasi Bendahara
     if (id === "1234567890") {
-      console.log("Login Bendahara berhasil");
-
-      // Navigasi ke Dashboard Bendahara
       router.replace("/Bendahara");
-
       return;
     }
 
